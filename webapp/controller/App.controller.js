@@ -5,9 +5,13 @@ sap.ui.define([
     function (Controller) {
         "use strict";
 
-        return Controller.extend("sap.training.exc.controller.App", {
+      return Controller.extend("sap.training.exc.controller.App", {
             
         
-      });
+      
+        onInit: function () {
+          this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+        }
+        });
     });
   
