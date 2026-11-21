@@ -11,13 +11,12 @@
             <Toolbar>
               <content>
                 <ToolbarSpacer/>
-                <Button icon="sap-icon://create" text="Create 
-Customer"/>
+                <Button icon="sap-icon://create" text="Create Customer" press=".onSave"/>
               </content>
             </Toolbar>
           </f:toolbar>
 
-   <!--#Unit 8: Implementing the UI>-->  
+   <!--#Unit 8: Implementing the UI -->  
 
           <f:content>
             <core:Title text="General Data"/>
