@@ -2,7 +2,8 @@
           xmlns:mvc="sap.ui.core.mvc"  
           xmlns="sap.m"
           xmlns:f="sap.ui.layout.form" 
-          xmlns:core="sap.ui.core">
+          xmlns:core="sap.ui.core"
+          core:require="{formatter:'sap/training/exc/model/formatter'}">
 <Page title="Flight Customers">
   <content>
     <Panel headerText="New Customer" expandable="true" expanded="true" class="sapUiResponsiveMargin sapUiHideOnPhone" width="auto">
@@ -27,7 +28,10 @@
             <Input value="{customer>/CustomerName}"/>
 
             <Label text="Discount"/>
-            <Input value="{customer>/Discount}"/>
+            <Input value="{path: 'customer>/Discount',
+             type: 'sap.ui.model.type.Integer',
+             constraints: {minimum: 0, maximum: 100}}"/>
+
 
            <core:Title text="Address Data"/>
            <Label text="Street" />
@@ -44,10 +48,10 @@
             <Input value="{customer>/Country}"/>
 
             <Label text="Email" />
-            <Input value="{customer>/Email}" />
+            <Input value="{customer>/Email}"/>
 
             <Label text="Telephone" />
-            <Input value="{customer>/Telephone}" />
+            <Input value="{customer>/Telephone}"/>
 
 
           </f:content>
@@ -97,10 +101,17 @@
       <cells>
         <ObjectIdentifier title="{AirlineID}"/>
         <ObjectIdentifier title="{ConnectionNumber}"/> 
-        <ObjectIdentifier title="{FlightDate}"/>
-        <Text text="{Class}"/>
-        <ObjectNumber number="{ForeignCurrencyPayment}"
-              unit="{ForeignCurrency}"/>
+        <ObjectIdentifier  title="{path: 'FlightDate', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-dd'}, style: 'medium'}}"/>
+
+    
+        <Text text="{path:'Class',formatter:'formatter.classText'}"/>
+
+        <ObjectNumber number="{parts: [ 
+        {path:'ForeignCurrencyPayment'}, 
+        {path: 'ForeignCurrency'}], 
+        type: 'sap.ui.model.type.Currency',  
+        formatOptions: {showMeasure: false}}" unit="{ForeignCurrency}"/>
+
         <Text text="{IsCancelled}"/>
       </cells>
     </ColumnListItem>
