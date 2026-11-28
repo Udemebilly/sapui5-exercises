@@ -81,11 +81,8 @@
 
                 }
             },
-
-
-            "ODataModel": {
+            "": {
                 "dataSource": "mainService",
-                "type": "sap.ui.model.odata.v4.ODataModel",
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
@@ -93,12 +90,7 @@
                     "earlyRequests": true
 
                 }
-            }, 
-
-            "": {
-                "type": "sap.ui.model.json.JSONModel",
-                "uri": "model/data.json"
-              }
+            }
               
         },
 
